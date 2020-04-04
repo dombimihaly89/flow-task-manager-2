@@ -1,4 +1,4 @@
-package hu.flowacademy.flowtaskmanager2.models;
+package hu.flowacademy.flowtaskmanager2.model;
 
 import java.time.LocalDate;
 import java.util.List;
