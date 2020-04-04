@@ -14,11 +14,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table
+@Table(name = "tasks")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Task {
 
     @Id
