@@ -41,7 +41,7 @@ public class TaskController {
 
   @PutMapping("/{id}")
   public ResponseEntity<TaskDTO> updateTask(@PathVariable Long id, @RequestBody Task task) {
-    return new ResponseEntity<>(taskService.updateTask(id, task), HttpStatus.ACCEPTED) ;
+    return new ResponseEntity<>(taskService.updateTask(id, task), HttpStatus.OK) ;
   }
 
   @DeleteMapping("/{id}")
