@@ -42,4 +42,8 @@ public class TaskService {
     oldTask.setType(task.getType());
     return new TaskDTO(taskRepository.save(oldTask));
   }
+
+  public void deleteTask(Long id) {
+    taskRepository.deleteById(id);
+  }
 }
