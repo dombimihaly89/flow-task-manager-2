@@ -35,8 +35,8 @@ public class TaskController {
   }
 
   @PostMapping()
-  public ResponseEntity<TaskDTO> createTask(@RequestBody Task task) {
-    return new ResponseEntity<>(taskService.createTask(task), HttpStatus.CREATED);
+  public ResponseEntity<TaskDTO> createTask(@RequestBody TaskDTO taskdto) {
+    return new ResponseEntity<>(taskService.createTask(taskdto), HttpStatus.CREATED);
   }
 
   @PutMapping("/{id}")
