@@ -36,9 +36,17 @@ public class UserDTO {
     this.setLastName(user.getLastName());
     this.setDateOfBirth(user.getDateOfBirth());
     this.setRole(user.getRole());
-    this.setTasks(user.getTasks().stream().map(TaskDTO::new).collect(Collectors.toList()));
-    this.setSolutions(user.getSolutions().stream().map(SolutionDTO::new).collect(Collectors.toList()));
-    this.setRatings(user.getRatings().stream().map(RatingDTO::new).collect(Collectors.toList()));
-    this.setPosts(user.getPosts().stream().map(PostDTO::new).collect(Collectors.toList()));
+    if (user.getTasks() != null) {
+      this.setTasks(user.getTasks().stream().map(TaskDTO::new).collect(Collectors.toList()));
+    }
+    if (user.getSolutions() != null) {
+      this.setSolutions(user.getSolutions().stream().map(SolutionDTO::new).collect(Collectors.toList()));
+    }
+    if (user.getRatings() != null) {
+      this.setRatings(user.getRatings().stream().map(RatingDTO::new).collect(Collectors.toList()));
+    }
+    if (user.getPosts() != null) {
+      this.setPosts(user.getPosts().stream().map(PostDTO::new).collect(Collectors.toList()));
+    }
   }
 }
