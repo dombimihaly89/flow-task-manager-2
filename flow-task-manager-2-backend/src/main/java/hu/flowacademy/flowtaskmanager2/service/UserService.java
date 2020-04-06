@@ -40,7 +40,7 @@ public class UserService {
     return new UserDTO(userRepository.save(oldUser));
   }
 
-  public Void deleteUser(Long id) {
+  public void deleteUser(Long id) {
     userRepository.deleteById(id);
   }
 }
