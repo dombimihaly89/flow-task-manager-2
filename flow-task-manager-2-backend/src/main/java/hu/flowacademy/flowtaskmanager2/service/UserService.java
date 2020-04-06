@@ -31,13 +31,13 @@ public class UserService {
     return new UserDTO(userRepository.save(user));
   }
 
-  public UserDTO updateUser(Long id, User user) {
+  public void updateUser(Long id, User user) {
     User oldUser = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     oldUser.setFirstName(user.getFirstName());
     oldUser.setLastName(user.getLastName());
     oldUser.setDateOfBirth(user.getDateOfBirth());
     oldUser.setPassword(user.getPassword());
-    return new UserDTO(userRepository.save(oldUser));
+    userRepository.save(oldUser);
   }
 
   public void deleteUser(Long id) {
