@@ -5,7 +5,7 @@
 export const environment = {
   baseUrl: 'https://jsonplaceholder.typicode.com',
   production: false,
-  storagePrefix: 'flow_task_manager',
+  storagePrefix: 'flow_task_manager_',
 };
 
 /*
