@@ -3,3 +3,8 @@
 @import "mixins";
 @import "overrides";
 @import "variables";
+
+@font-face {
+  font-family: 'Amatic SC';
+  src: url(/assets/fonts/AmaticSC-Bold.ttf) format("truetype");
+}

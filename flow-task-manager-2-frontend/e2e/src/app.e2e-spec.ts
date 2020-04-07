@@ -11,7 +11,7 @@ describe('workspace-project App', () => {
   it('should display welcome message', () => {
     page.navigateTo();
     expect(page.getTitleText())
-      .toEqual('flow-task-manager-2-frontend app is running!');
+      .toEqual('flow-task-manager-frontend app is running!');
   });
 
   afterEach(async () => {
