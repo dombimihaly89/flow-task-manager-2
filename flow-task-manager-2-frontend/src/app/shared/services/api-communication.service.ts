@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractApiConnector } from '~/app/shared/api-connectors/AbstractApiConnector';
-import { WelcomeApiConnector } from '~/app/shared/api-connectors/WelcomeApiConnector';
 import { ConfigurationService } from '~/app/shared/services/configuration.service';
+import { TaskApiConnector } from '../api-connectors/TaskApiConnector';
 
 export enum Connector {
-  WELCOME = '[Welcome]',
+  TASK = '[Task]'
 }
 
 @Injectable()
@@ -23,8 +23,8 @@ export class ApiCommunicationService {
 
     // register connectors
     this.registerConnector(
-      Connector.WELCOME,
-      new WelcomeApiConnector(this.http, this.apiBaseUrl)
+      Connector.TASK,
+      new TaskApiConnector(this.http, this.apiBaseUrl)
     );
   }
 
@@ -58,7 +58,7 @@ export class ApiCommunicationService {
   }
 
   // API connector getters
-  public welcome(): WelcomeApiConnector {
-    return this.getConnector(Connector.WELCOME) as WelcomeApiConnector;
+  public task(): TaskApiConnector {
+    return this.getConnector(Connector.TASK) as TaskApiConnector;
   }
 }
