@@ -87,7 +87,10 @@ import { Component } from "@angular/core";
             <a class="nav-link" [ngClass]="{'collapsed-item': !navbarCollapsed}" href="#">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [ngClass]="{'collapsed-item': !navbarCollapsed}" href="#">Tasks</a>
+            <a
+            class="nav-link"
+            [ngClass]="{'collapsed-item': !navbarCollapsed}"
+            routerLink="/tasks">Tasks</a>
           </li>
         </ul>
       </div>

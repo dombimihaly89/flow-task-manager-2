@@ -10,6 +10,13 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
   },
+  {
+    component: MainLayoutComponent,
+    loadChildren: () => import('./task/task.module')
+      .then((m) => m.TaskModule),
+    path: 'tasks',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
