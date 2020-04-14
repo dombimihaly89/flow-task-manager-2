@@ -1,15 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { Task } from "~/app/models/task-model";
-import { TaskService } from "~/app/shared/services/task.service";
+import { Component, Input } from '@angular/core';
+import { Task } from '~/app/models/task-model';
 
 @Component({
-  selector: "app-task",
+  selector: 'app-task',
   styles: [
     `
-      h1 {
-        text-align: center;
-      }
-
       .JAVA {
         background-image: url("../../../assets/images/java.jpg");
         background-size: cover;
@@ -56,13 +51,12 @@ import { TaskService } from "~/app/shared/services/task.service";
     `,
   ],
   template: `
-    <h1>Tasks</h1>
-    <mat-card *ngFor="let task of tasks" class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar [ngClass]="task.type"></div>
-          <mat-card-title>{{ task.title }}</mat-card-title>
-          <mat-card-subtitle> {{ task.type }}</mat-card-subtitle>
-        </mat-card-header>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar [ngClass]="task.type"></div>
+        <mat-card-title>{{ task.title }}</mat-card-title>
+        <mat-card-subtitle> {{ task.type }}</mat-card-subtitle>
+      </mat-card-header>
       <hr />
       <mat-card-content>
         <p>
@@ -86,16 +80,8 @@ import { TaskService } from "~/app/shared/services/task.service";
     </mat-card>
   `,
 })
-export class TaskComponent implements OnInit {
-  public tasks: Task[];
+export class TaskComponent {
 
-  constructor(private taskService: TaskService) {}
-
-  public ngOnInit() {
-    this.taskService.getTasks();
-    this.taskService.taskBehaviourSubject.subscribe((data) => {
-      this.tasks = data;
-      console.log(this.tasks);
-    });
-  }
+  @Input()
+  public task: Task;
 }
