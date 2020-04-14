@@ -7,8 +7,9 @@ import { MaterialModule } from '~/app/shared/material.module';
 import { MainLayoutComponent } from '~/app/shared/pages/main-layout.component';
 import { ApiCommunicationService } from '~/app/shared/services/api-communication.service';
 import { ConfigurationService } from '~/app/shared/services/configuration.service';
-import { HeaderComponent } from './components/header.component';
 import { BootstrapModule } from './bootstrap.module';
+import { HeaderComponent } from './components/header.component';
+import { TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { BootstrapModule } from './bootstrap.module';
   providers: [
     ApiCommunicationService,
     ConfigurationService,
+    TaskService,
   ],
 })
 export class SharedModule { }
