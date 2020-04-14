@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
     `
       nav {
         font-family: "Amatic SC";
-        font-size: 1.2em;
+        font-size: 2em;
       }
 
       .nav-link:hover {
