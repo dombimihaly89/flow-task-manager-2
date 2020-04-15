@@ -1,5 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Task } from "~/app/models/task-model";
+import { Rating } from "~/app/models/rating-model";
 
 @Component({
   selector: "app-task",
@@ -64,7 +65,14 @@ import { Task } from "~/app/models/task-model";
         <button mat-button class="like">LIKE</button>
         <button mat-button class="dislike">DISLIKE</button>
         <button mat-button class="post">POST A SOLUTION</button>
-        <p>likes: 3, dislikes: 4,</p>
+        <div [ngSwitch]="likers.length">
+          <p *ngSwitchCase="0">{{ likers.length }} people likes this</p>
+          <p *ngSwitchCase="1">{{ likers[0].username }} likes this</p>
+          <p *ngSwitchCase="2">{{ likers[0].username }} and {{ likers[1].username }} like this</p>
+          <p *ngSwitchDefault>
+            {{ likers[0].username }} and {{ likers[1].username }} and {{ likers.length - 2}} more people like this.
+          </p>
+        </div>
       </mat-card-actions>
       <mat-card-footer>
         <p>
@@ -77,11 +85,20 @@ import { Task } from "~/app/models/task-model";
     </mat-card>
   `,
 })
-export class TaskComponent {
-
-  public likers: number;
-  public disLikers: number;
+export class TaskComponent implements OnInit {
+  public likers: Rating[] = [];
+  public disLikers: Rating[] = [];
 
   @Input()
   public task: Task;
+
+  ngOnInit() {
+    for (const rating of this.task.ratings) {
+      if (rating.rating === "LIKE") {
+        this.likers.push(rating);
+      } else {
+        this.disLikers.push(rating);
+      }
+    }
+  }
 }
