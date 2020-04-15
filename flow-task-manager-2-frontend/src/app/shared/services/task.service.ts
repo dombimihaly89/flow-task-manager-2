@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from '~/app/models/task-model';
 import { ApiCommunicationService } from './api-communication.service';
 
@@ -12,6 +12,11 @@ export class TaskService {
 
   public get taskBehaviourSubject() {
     return this._taskBehaviourSubject;
+  }
+
+  public getTask(taskId: number): Observable<Task> {
+    return this.apiCommunicationService.task()
+    .getTask(taskId);
   }
 
   public getTasks() {

@@ -6,7 +6,7 @@ export interface Task {
   difficulty: string;
   createdAt: Date;
   updatedAt: Date;
-  userId: number;
+  username: string;
   solutions: number;
   posts: any[];
 }

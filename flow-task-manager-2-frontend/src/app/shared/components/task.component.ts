@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { Task } from '~/app/models/task-model';
+import { Component, Input } from "@angular/core";
+import { Task } from "~/app/models/task-model";
 
 @Component({
-  selector: 'app-task',
+  selector: "app-task",
   styles: [
     `
       .JAVA {
@@ -29,16 +29,6 @@ import { Task } from '~/app/models/task-model';
         margin-bottom: 20px;
       }
 
-      .like {
-        background-color: #0e82cf;
-        color: white;
-      }
-
-      .dislike {
-        background-color: #eb2805;
-        color: white;
-      }
-
       .post {
         background-color: #0ecfb4;
         margin-left: 10px;
@@ -55,13 +45,14 @@ import { Task } from '~/app/models/task-model';
     `,
   ],
   template: `
-    <mat-card class="example-card">
+    <mat-card>
       <a [routerLink]="['/tasks', task.id]">
-      <mat-card-header>
-        <div mat-card-avatar [ngClass]="task.type"></div>
-        <mat-card-title>{{ task.title }}</mat-card-title>
-        <mat-card-subtitle> {{ task.type }}</mat-card-subtitle>
-      </mat-card-header>
+        <mat-card-header>
+          <div mat-card-avatar [ngClass]="task.type"></div>
+          <mat-card-title>{{ task.title }}</mat-card-title>
+          <mat-card-subtitle> {{ task.type }}</mat-card-subtitle>
+          <mat-card-subtitle>Posted by: {{ task.username }} </mat-card-subtitle>
+        </mat-card-header>
       </a>
       <hr />
       <mat-card-content>
@@ -87,7 +78,6 @@ import { Task } from '~/app/models/task-model';
   `,
 })
 export class TaskComponent {
-
   @Input()
   public task: Task;
 }

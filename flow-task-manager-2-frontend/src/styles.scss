@@ -8,3 +8,23 @@
   font-family: 'Amatic SC';
   src: url(/assets/fonts/AmaticSC-Bold.ttf) format("truetype");
 }
+
+.like {
+  background-color: #0e82cf;
+  color: white;
+}
+
+.dislike {
+  background-color: #eb2805;
+  color: white;
+}
+
+mat-card-footer {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+mat-card-actions {
+  margin-left: 0px;
+  margin-right: 0px;
+}
