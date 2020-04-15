@@ -33,7 +33,7 @@ public class TaskService {
   }
 
   public TaskDTO createTask(TaskDTO taskDTO) {
-    User user = userRepository.findById(taskDTO.getUserId()).orElseThrow(() -> new UserNotFoundException(taskDTO.getUserId()));
+    User user = userRepository.findByUsername(taskDTO.getUsername());
     taskDTO.setCreatedAt(LocalDateTime.now());
     return new TaskDTO(taskRepository.save(taskDTO.toEntity(user)));
   }

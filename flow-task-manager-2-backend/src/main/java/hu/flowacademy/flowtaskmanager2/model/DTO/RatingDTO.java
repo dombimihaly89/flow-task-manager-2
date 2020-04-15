@@ -11,22 +11,27 @@ public class RatingDTO {
 
   private Rating.UserRating rating;
 
-  private UserDTO user;
+  private String username;
 
-  private SolutionDTO solution;
+  private Long solutionId;
 
-  private PostDTO post;
+  private Long postId;
 
-  private TaskDTO task;
+  private Long taskId;
 
   public RatingDTO(Rating rating) {
     this.setId(rating.getId());
     this.setRating(rating.getRating());
-    this.setUser(new UserDTO(rating.getUser()));
-    this.setSolution(new SolutionDTO(rating.getSolution()));
-    this.setPost(new PostDTO(rating.getPost()));
-    this.setTask(new TaskDTO(rating.getTask()));
-
+    this.setUsername(rating.getUser().getUsername());
+    if (rating.getSolution() != null) {
+      this.setSolutionId(rating.getSolution().getId());
+    }
+    if (rating.getPost() != null) {
+      this.setPostId(rating.getPost().getId());
+    }
+    if (rating.getTask() != null) {
+      this.setTaskId(rating.getTask().getId());
+    }
   }
 
 }

@@ -30,11 +30,13 @@ public class TaskDTO {
 
   private LocalDateTime updatedAt;
 
-  private Long userId;
+  private String username;
 
   private int solutions;
 
   private List<PostDTO> posts;
+
+  private List<RatingDTO> ratings;
 
   public TaskDTO(Task task) {
     this.setId(task.getId());
@@ -44,12 +46,15 @@ public class TaskDTO {
     this.setDifficulty(task.getDifficulty());
     this.setCreatedAt(task.getCreatedAt());
     this.setUpdatedAt(task.getUpdatedAt());
-    this.setUserId(task.getUser().getId());
+    this.setUsername(task.getUser().getUsername());
     if (task.getSolutions() != null) {
       this.setSolutions(task.getSolutions().size());
     }
     if (task.getPosts() != null) {
       this.setPosts(task.getPosts().stream().map(PostDTO::new).collect(Collectors.toList()));
+    }
+    if (task.getRatings() != null){
+      this.setRatings(task.getRatings().stream().map(RatingDTO::new).collect(Collectors.toList()));
     }
   }
 

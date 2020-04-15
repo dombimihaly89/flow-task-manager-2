@@ -3,12 +3,15 @@ package hu.flowacademy.flowtaskmanager2.utils;
 import hu.flowacademy.flowtaskmanager2.exception.TaskNotFoundException;
 import hu.flowacademy.flowtaskmanager2.exception.UserNotFoundException;
 import hu.flowacademy.flowtaskmanager2.model.DTO.TaskDTO;
+import hu.flowacademy.flowtaskmanager2.model.Rating;
+import hu.flowacademy.flowtaskmanager2.model.Rating.UserRating;
 import hu.flowacademy.flowtaskmanager2.model.Solution;
 import hu.flowacademy.flowtaskmanager2.model.Task;
 import hu.flowacademy.flowtaskmanager2.model.Task.Difficulty;
 import hu.flowacademy.flowtaskmanager2.model.Task.Type;
 import hu.flowacademy.flowtaskmanager2.model.User;
 import hu.flowacademy.flowtaskmanager2.model.User.Role;
+import hu.flowacademy.flowtaskmanager2.repository.RatingRepository;
 import hu.flowacademy.flowtaskmanager2.repository.SolutionRepository;
 import hu.flowacademy.flowtaskmanager2.repository.TaskRepository;
 import hu.flowacademy.flowtaskmanager2.repository.UserRepository;
@@ -27,6 +30,7 @@ public class InitDataLoader {
   private UserRepository userRepository;
   private TaskRepository taskRepository;
   private SolutionRepository solutionRepository;
+  private RatingRepository ratingRepository;
 
   @PostConstruct
   public void init() {
@@ -56,6 +60,18 @@ public class InitDataLoader {
     solutionRepository.save(
         Solution.builder().content("System.out.println(\"Palindrom\")").createdAt(LocalDateTime.now()).task(taskRepository.findById(2L).orElseThrow(() -> new TaskNotFoundException(2L)))
             .user(userRepository.findById(2L).orElseThrow(() -> new UserNotFoundException(2L))).build());
+
+    ratingRepository.save(
+        Rating.builder().rating(UserRating.LIKE).user(userRepository.findById(1L).orElseThrow(() -> new UserNotFoundException(1L)))
+        .task(taskRepository.findById(1L).orElseThrow(() -> new TaskNotFoundException(1L))).build());
+
+    ratingRepository.save(
+        Rating.builder().rating(UserRating.DISLIKE).user(userRepository.findById(2L).orElseThrow(() -> new UserNotFoundException(2L)))
+            .task(taskRepository.findById(1L).orElseThrow(() -> new TaskNotFoundException(1L))).build());
+
+    ratingRepository.save(
+        Rating.builder().rating(UserRating.LIKE).user(userRepository.findById(1L).orElseThrow(() -> new UserNotFoundException(1L)))
+            .task(taskRepository.findById(2L).orElseThrow(() -> new TaskNotFoundException(2L))).build());
 
   }
 }

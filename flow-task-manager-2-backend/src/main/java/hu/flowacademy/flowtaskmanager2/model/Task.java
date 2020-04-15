@@ -63,6 +63,10 @@ public class Task {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
     private List<Post> posts;
 
+    @Column
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
+    private List<Rating> ratings;
+
     public enum Type {
         JAVA,
         JAVASCRIPT,
