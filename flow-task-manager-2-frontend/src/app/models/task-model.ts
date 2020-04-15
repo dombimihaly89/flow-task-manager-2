@@ -1,3 +1,5 @@
+import { Rating } from './rating-model';
+
 export interface Task {
   id: number;
   type: string;
@@ -9,4 +11,5 @@ export interface Task {
   username: string;
   solutions: number;
   posts: any[];
+  ratings: Rating[];
 }
