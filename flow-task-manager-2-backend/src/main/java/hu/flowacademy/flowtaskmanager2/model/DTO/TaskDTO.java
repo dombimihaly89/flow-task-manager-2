@@ -32,7 +32,7 @@ public class TaskDTO {
 
   private Long userId;
 
-  private List<SolutionDTO> solutions;
+  private int solutions;
 
   private List<PostDTO> posts;
 
@@ -46,7 +46,7 @@ public class TaskDTO {
     this.setUpdatedAt(task.getUpdatedAt());
     this.setUserId(task.getUser().getId());
     if (task.getSolutions() != null) {
-      this.setSolutions(task.getSolutions().stream().map(SolutionDTO::new).collect(Collectors.toList()));
+      this.setSolutions(task.getSolutions().size());
     }
     if (task.getPosts() != null) {
       this.setPosts(task.getPosts().stream().map(PostDTO::new).collect(Collectors.toList()));

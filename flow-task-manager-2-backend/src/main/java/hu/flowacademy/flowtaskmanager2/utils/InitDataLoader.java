@@ -1,12 +1,15 @@
 package hu.flowacademy.flowtaskmanager2.utils;
 
+import hu.flowacademy.flowtaskmanager2.exception.TaskNotFoundException;
 import hu.flowacademy.flowtaskmanager2.exception.UserNotFoundException;
 import hu.flowacademy.flowtaskmanager2.model.DTO.TaskDTO;
+import hu.flowacademy.flowtaskmanager2.model.Solution;
 import hu.flowacademy.flowtaskmanager2.model.Task;
 import hu.flowacademy.flowtaskmanager2.model.Task.Difficulty;
 import hu.flowacademy.flowtaskmanager2.model.Task.Type;
 import hu.flowacademy.flowtaskmanager2.model.User;
 import hu.flowacademy.flowtaskmanager2.model.User.Role;
+import hu.flowacademy.flowtaskmanager2.repository.SolutionRepository;
 import hu.flowacademy.flowtaskmanager2.repository.TaskRepository;
 import hu.flowacademy.flowtaskmanager2.repository.UserRepository;
 import java.time.LocalDate;
@@ -23,6 +26,7 @@ public class InitDataLoader {
 
   private UserRepository userRepository;
   private TaskRepository taskRepository;
+  private SolutionRepository solutionRepository;
 
   @PostConstruct
   public void init() {
@@ -40,5 +44,18 @@ public class InitDataLoader {
     taskRepository.save(
         Task.builder().title("Blog app").type(Type.SPRING).content("Make a blog app").difficulty(
             Difficulty.HARD).createdAt(LocalDateTime.now()).user(userRepository.findById(2L).orElseThrow(() -> new UserNotFoundException(2L))).build());
+
+    solutionRepository.save(
+        Solution.builder().content("System.out.println(\"Hello World\")").createdAt(LocalDateTime.now()).task(taskRepository.findById(1L).orElseThrow(() -> new TaskNotFoundException(1L)))
+        .user(userRepository.findById(1L).orElseThrow(() -> new UserNotFoundException(1L))).build());
+
+    solutionRepository.save(
+        Solution.builder().content("System.out.println(\"Hello World\")").createdAt(LocalDateTime.now()).task(taskRepository.findById(1L).orElseThrow(() -> new TaskNotFoundException(1L)))
+            .user(userRepository.findById(2L).orElseThrow(() -> new UserNotFoundException(2L))).build());
+
+    solutionRepository.save(
+        Solution.builder().content("System.out.println(\"Palindrom\")").createdAt(LocalDateTime.now()).task(taskRepository.findById(2L).orElseThrow(() -> new TaskNotFoundException(2L)))
+            .user(userRepository.findById(2L).orElseThrow(() -> new UserNotFoundException(2L))).build());
+
   }
 }

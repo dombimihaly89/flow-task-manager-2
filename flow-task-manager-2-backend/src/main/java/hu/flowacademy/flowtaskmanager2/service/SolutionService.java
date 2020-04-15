@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,6 +26,10 @@ public class SolutionService {
 
   public Optional<SolutionDTO> findOne(Long id) {
     return Optional.of(solutionRepository.findById(id).map(SolutionDTO::new).orElseThrow(() -> new SolutionNotFoundException(id)));
+  }
+
+  public List<SolutionDTO> findByTaskId(Long taskId) {
+    return solutionRepository.findByTask_Id(taskId).stream().map(SolutionDTO::new).collect(Collectors.toList());
   }
 
   public SolutionDTO createSolution(Solution solution) {

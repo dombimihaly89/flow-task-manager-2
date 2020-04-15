@@ -7,6 +7,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/solutions")
+@CrossOrigin("http://localhost:4200")
 public class SolutionController {
 
   private SolutionService solutionService;
@@ -32,6 +34,11 @@ public class SolutionController {
   @GetMapping("/{id}")
   public ResponseEntity<SolutionDTO> findOne(@PathVariable Long id) {
     return solutionService.findOne(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  @GetMapping("/{taskId}/task")
+  public ResponseEntity<List<SolutionDTO>> findByTaskId(@PathVariable Long taskId) {
+    return new ResponseEntity<>(solutionService.findByTaskId(taskId), HttpStatus.OK) ;
   }
 
   @PostMapping

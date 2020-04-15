@@ -17,9 +17,9 @@ public class SolutionDTO {
 
   private LocalDateTime updatedAt;
 
-  private TaskDTO task;
+  private Long taskId;
 
-  private UserDTO user;
+  private String username;
 
   private List<RatingDTO> ratings;
 
@@ -30,8 +30,8 @@ public class SolutionDTO {
     this.setContent(solution.getContent());
     this.setCreatedAt(solution.getCreatedAt());
     this.setUpdatedAt(solution.getUpdatedAt());
-    this.setTask(new TaskDTO(solution.getTask()));
-    this.setUser(new UserDTO(solution.getUser()));
+    this.setTaskId(solution.getTask().getId());
+    this.setUsername(solution.getUser().getUsername());
     this.setRatings(solution.getRatings().stream().map(RatingDTO::new).collect(Collectors.toList()));
     this.setPosts(solution.getPosts().stream().map(PostDTO::new).collect(Collectors.toList()));
   }
