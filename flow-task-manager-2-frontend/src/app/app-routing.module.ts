@@ -21,7 +21,7 @@ const routes: Routes = [
     component: MainLayoutComponent,
     loadChildren: () => import('./solution/solution.module')
       .then((m) => m.SolutionModule),
-    path: 'tasks/:id',
+    path: 'tasks/:taskId',
     pathMatch: 'full',
   },
 ];
