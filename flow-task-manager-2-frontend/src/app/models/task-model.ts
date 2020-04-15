@@ -7,6 +7,6 @@ export interface Task {
   createdAt: Date;
   updatedAt: Date;
   userId: number;
-  solutions: any[];
+  solutions: number;
   posts: any[];
 }

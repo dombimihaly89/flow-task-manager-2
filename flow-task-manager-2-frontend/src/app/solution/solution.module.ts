@@ -3,6 +3,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SolutionListComponent } from './components/solution-list.component';
 import { SolutionComponent } from './components/solution.component';
 import { SolutionRoutingModule } from './solution-routing.module';
+import { SolutionService } from '../shared/services/solution.service';
 
 @NgModule({
   declarations: [
@@ -13,5 +14,6 @@ import { SolutionRoutingModule } from './solution-routing.module';
     SharedModule,
     SolutionRoutingModule,
   ],
+  providers: [SolutionService]
 })
 export class SolutionModule {}

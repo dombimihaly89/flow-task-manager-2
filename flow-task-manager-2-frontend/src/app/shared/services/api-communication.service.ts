@@ -3,9 +3,11 @@ import { Injectable } from '@angular/core';
 import { AbstractApiConnector } from '~/app/shared/api-connectors/AbstractApiConnector';
 import { ConfigurationService } from '~/app/shared/services/configuration.service';
 import { TaskApiConnector } from '../api-connectors/TaskApiConnector';
+import { SolutionApiConnector } from '../api-connectors/SolutionApiConnector';
 
 export enum Connector {
-  TASK = '[Task]'
+  TASK = '[Task]',
+  SOLUTION = '[Solution]'
 }
 
 @Injectable()
@@ -25,6 +27,11 @@ export class ApiCommunicationService {
     this.registerConnector(
       Connector.TASK,
       new TaskApiConnector(this.http, this.apiBaseUrl)
+    );
+
+    this.registerConnector(
+      Connector.SOLUTION,
+      new SolutionApiConnector(this.http, this.apiBaseUrl)
     );
   }
 
@@ -60,5 +67,9 @@ export class ApiCommunicationService {
   // API connector getters
   public task(): TaskApiConnector {
     return this.getConnector(Connector.TASK) as TaskApiConnector;
+  }
+
+  public solution(): SolutionApiConnector {
+    return this.getConnector(Connector.SOLUTION) as SolutionApiConnector;
   }
 }

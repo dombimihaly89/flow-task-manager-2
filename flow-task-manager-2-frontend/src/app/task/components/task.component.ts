@@ -77,7 +77,7 @@ import { Task } from '~/app/models/task-model';
       </mat-card-actions>
       <mat-card-footer>
         <p>
-          Solutions: 4
+          Solutions: {{ task.solutions }}
           <span class="createdAt">
             Created: {{ task.createdAt | date: "yyyy.MM.dd. HH:mm" }}
           </span>
