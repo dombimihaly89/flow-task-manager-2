@@ -48,15 +48,21 @@ import { Task } from '~/app/models/task-model';
         float: right;
         margin-right: 10px;
       }
+
+      a {
+        text-decoration: none;
+      }
     `,
   ],
   template: `
     <mat-card class="example-card">
+      <a [routerLink]="['/tasks', task.id]">
       <mat-card-header>
         <div mat-card-avatar [ngClass]="task.type"></div>
         <mat-card-title>{{ task.title }}</mat-card-title>
         <mat-card-subtitle> {{ task.type }}</mat-card-subtitle>
       </mat-card-header>
+      </a>
       <hr />
       <mat-card-content>
         <p>
