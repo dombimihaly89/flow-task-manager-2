@@ -78,6 +78,10 @@ import { Task } from "~/app/models/task-model";
   `,
 })
 export class TaskComponent {
+
+  public likers: number;
+  public disLikers: number;
+
   @Input()
   public task: Task;
 }
