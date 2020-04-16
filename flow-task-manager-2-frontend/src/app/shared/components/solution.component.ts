@@ -15,6 +15,18 @@ import { Solution } from "~/app/models/solution-model";
       mat-card-header {
         margin-left: 0px;
       }
+
+      .mat-card-actions {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+
+      mat-card-footer {
+        margin-left: 0px;
+        margin-right: 0px;
+      }
     `,
   ],
   template: `

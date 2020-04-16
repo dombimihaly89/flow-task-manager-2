@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Task } from "~/app/models/task-model";
 import { Rating } from "~/app/models/rating-model";
+import { Task } from "~/app/models/task-model";
 
 @Component({
   selector: "app-task",
@@ -43,6 +43,18 @@ import { Rating } from "~/app/models/rating-model";
       a {
         text-decoration: none;
       }
+
+      .mat-card-actions {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+
+      .mat-card-footer {
+        margin-left: 0px;
+        margin-right: 0px;
+      }
     `,
   ],
   template: `
@@ -62,17 +74,20 @@ import { Rating } from "~/app/models/rating-model";
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button class="like">LIKE</button>
-        <button mat-button class="dislike">DISLIKE</button>
-        <button mat-button class="post">POST A SOLUTION</button>
         <div [ngSwitch]="likers.length">
           <p *ngSwitchCase="0">{{ likers.length }} people likes this</p>
           <p *ngSwitchCase="1">{{ likers[0].username }} likes this</p>
-          <p *ngSwitchCase="2">{{ likers[0].username }} and {{ likers[1].username }} like this</p>
+          <p *ngSwitchCase="2">
+            {{ likers[0].username }} and {{ likers[1].username }} like this
+          </p>
           <p *ngSwitchDefault>
-            {{ likers[0].username }} and {{ likers[1].username }} and {{ likers.length - 2}} more people like this.
+            {{ likers[0].username }} and {{ likers[1].username }} and
+            {{ likers.length - 2 }} more people like this.
           </p>
         </div>
+        <button mat-button class="like">LIKE</button>
+        <button mat-button class="dislike">DISLIKE</button>
+        <button mat-button class="post">POST A SOLUTION</button>
       </mat-card-actions>
       <mat-card-footer>
         <p>
