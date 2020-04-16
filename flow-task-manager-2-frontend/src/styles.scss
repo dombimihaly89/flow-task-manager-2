@@ -10,23 +10,13 @@
 }
 
 .like {
+  margin-left: 0px !important;
   background-color: #0e82cf;
   color: white;
 }
 
 .dislike {
+  margin-left: 0px;
   background-color: #eb2805;
   color: white;
-}
-
-mat-card-actions {
-  margin-left: 0px;
-  margin-right: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-mat-card-footer {
-  margin-left: 0px;
-  margin-right: 0px;
 }

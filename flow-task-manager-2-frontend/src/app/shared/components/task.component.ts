@@ -55,6 +55,36 @@ import { Task } from "~/app/models/task-model";
         margin-left: 0px;
         margin-right: 0px;
       }
+
+      td {
+        margin-right: 10px;
+      }
+
+      .likers {
+        color: #0e82cf;
+      }
+
+      .dislikers {
+        color: #eb2805;
+      }
+
+      .solutions {
+        width: 120px;
+        height: 36px;
+        background-color: #82B80D;
+        padding: 10px 21px 10px 25px;
+        color: white;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 4px;
+      }
+
+      .solution-number {
+        padding: 10px;
+        background-color: grey;
+        margin-left: 5px;
+      }
     `,
   ],
   template: `
@@ -74,24 +104,55 @@ import { Task } from "~/app/models/task-model";
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <div [ngSwitch]="likers.length">
-          <p *ngSwitchCase="0">{{ likers.length }} people likes this</p>
-          <p *ngSwitchCase="1">{{ likers[0].username }} likes this</p>
-          <p *ngSwitchCase="2">
-            {{ likers[0].username }} and {{ likers[1].username }} like this
-          </p>
-          <p *ngSwitchDefault>
-            {{ likers[0].username }} and {{ likers[1].username }} and
-            {{ likers.length - 2 }} more people like this.
-          </p>
-        </div>
+        <hr>
+        <table>
+          <tr>
+            <td class="likers">
+              <div [ngSwitch]="likers.length">
+                <p *ngSwitchCase="0">{{ likers.length }} people likes this.</p>
+                <p *ngSwitchCase="1">{{ likers[0].username }} likes this.</p>
+                <p *ngSwitchCase="2">
+                  {{ likers[0].username }} and {{ likers[1].username }} like
+                  this.
+                </p>
+                <p *ngSwitchDefault>
+                  {{ likers[0].username }} and {{ likers[1].username }} and
+                  {{ likers.length - 2 }} more people like this.
+                </p>
+              </div>
+            </td>
+            <td class="dislikers">
+              <div [ngSwitch]="dislikers.length">
+                <p *ngSwitchCase="0">
+                  {{ dislikers.length }} people dislikes this.
+                </p>
+                <p *ngSwitchCase="1">
+                  {{ dislikers[0].username }} dislikes this.
+                </p>
+                <p *ngSwitchCase="2">
+                  {{ dislikers[0].username }} and
+                  {{ dislikers[1].username }} dislike this.
+                </p>
+                <p *ngSwitchDefault>
+                  {{ dislikers[0].username }} and
+                  {{ dislikers[1].username }} and
+                  {{ dislikers.length - 2 }} more people dislike this.
+                </p>
+              </div>
+            </td>
+          </tr>
+        </table>
         <button mat-button class="like">LIKE</button>
         <button mat-button class="dislike">DISLIKE</button>
         <button mat-button class="post">POST A SOLUTION</button>
       </mat-card-actions>
       <mat-card-footer>
         <p>
-          Solutions: {{ task.solutions }}
+          <a [routerLink]="['/tasks', task.id]">
+          <span class="solutions">
+          SOLUTIONS: <span class="solution-number">{{ task.solutions }}</span>
+          </span>
+          </a>
           <span class="createdAt">
             Created: {{ task.createdAt | date: "yyyy.MM.dd. HH:mm" }}
           </span>
@@ -102,7 +163,7 @@ import { Task } from "~/app/models/task-model";
 })
 export class TaskComponent implements OnInit {
   public likers: Rating[] = [];
-  public disLikers: Rating[] = [];
+  public dislikers: Rating[] = [];
 
   @Input()
   public task: Task;
@@ -112,7 +173,7 @@ export class TaskComponent implements OnInit {
       if (rating.rating === "LIKE") {
         this.likers.push(rating);
       } else {
-        this.disLikers.push(rating);
+        this.dislikers.push(rating);
       }
     }
   }
