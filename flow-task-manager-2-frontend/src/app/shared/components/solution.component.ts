@@ -1,8 +1,8 @@
-import { Component, Input } from "@angular/core";
-import { Solution } from "~/app/models/solution-model";
+import { Component, Input } from '@angular/core';
+import { Solution } from '~/app/models/solution-model';
 
 @Component({
-  selector: "app-solution",
+  selector: 'app-solution',
   styles: [
     `
       .mat-card {
@@ -16,17 +16,6 @@ import { Solution } from "~/app/models/solution-model";
         margin-left: 0px;
       }
 
-      .mat-card-actions {
-        margin-left: 0px;
-        margin-right: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-      }
-
-      mat-card-footer {
-        margin-left: 0px;
-        margin-right: 0px;
-      }
     `,
   ],
   template: `

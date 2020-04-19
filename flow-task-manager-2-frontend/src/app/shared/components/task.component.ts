@@ -45,18 +45,6 @@ import { Task } from "~/app/models/task-model";
         text-decoration: none;
       }
 
-      .mat-card-actions {
-        margin-left: 0px;
-        margin-right: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-      }
-
-      .mat-card-footer {
-        margin-left: 0px;
-        margin-right: 0px;
-      }
-
       td {
         margin-right: 10px;
       }
