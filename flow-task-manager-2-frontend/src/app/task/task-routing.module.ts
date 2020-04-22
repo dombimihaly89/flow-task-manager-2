@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TaskListComponent } from './components/task-list.component';
+import { CreateTaskComponent } from './components/create-task.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
-    component: TaskListComponent,
-    path: ''
+    path: 'new',
+    component: TaskListComponent
   },
+  {
+    path: '',
+    component: CreateTaskComponent,
+  },
+
 ];
 @NgModule({
   exports: [RouterModule],
