@@ -1,10 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { Task } from "~/app/models/task-model";
-import { TaskService } from "~/app/shared/services/task.service";
-import { MatIconRegistry } from "@angular/material/icon";
+import { Component, OnInit } from '@angular/core';
+import { Task } from '~/app/models/task-model';
+import { TaskService } from '~/app/shared/services/task.service';
 
 @Component({
-  selector: "app-task-list",
+  selector: 'app-task-list',
   styles: [
     `
       h1 {
@@ -35,10 +34,7 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    private matIconRegistry: MatIconRegistry
-  ) {
-    this.matIconRegistry.addSvgIcon("home", "assets/img/icon/home.svg");
-  }
+  ) {}
 
   public ngOnInit() {
     this.taskService.getTasks();

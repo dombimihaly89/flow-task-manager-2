@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TaskListComponent } from './components/task-list.component';
 import { CreateTaskComponent } from './components/create-task.component';
+import { TaskListComponent } from './components/task-list.component';
 
 export const routes: Routes = [
   {
     path: 'new',
-    component: TaskListComponent
+    component: CreateTaskComponent
+  },
+  {
+    path: ':taskId',
+    loadChildren: () => import('../solution/solution.module')
+    .then((m) => m.SolutionModule),
   },
   {
     path: '',
-    component: CreateTaskComponent,
+    component: TaskListComponent,
   },
 
 ];

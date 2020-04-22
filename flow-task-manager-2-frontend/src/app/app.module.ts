@@ -9,6 +9,7 @@ import { SharedModule } from '~/app/shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SolutionService } from './shared/services/solution.service';
 
 // http loader for translations file
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
+  SolutionService,
 ]
 })
 export class AppModule {

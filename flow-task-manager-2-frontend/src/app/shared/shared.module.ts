@@ -28,7 +28,6 @@ import { SolutionComponent } from './components/solution.component';
     BootstrapModule,
     TaskComponent,
     SolutionComponent,
-    RouterModule,
   ],
   imports: [
     CommonModule,
