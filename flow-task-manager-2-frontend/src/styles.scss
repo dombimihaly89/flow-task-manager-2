@@ -31,3 +31,29 @@
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
+
+.mat-select-value {
+  max-width: 200px !important;
+  width: 200px !important;
+}
+
+.taskContent .mat-form-field-underline {
+  width:0px !important;
+}
+
+.mat-input-element {
+  height: 20px;
+  border: 1px 0 0 1px solid !important;
+  box-shadow: 2px 2px 1px -1px rgba(0,0,0,.2), 6px 6px 1px 0 rgba(0,0,0,.14), -2px -2px 3px 0 rgba(0,0,0,.12);
+}
+
+textarea {
+  height: 300px !important;
+  width: 400px !important;
+  max-width: 400px !important;
+}
+
+.mat-form-field-underline {
+  height: 0px !important;
+  width: 0px !important;
+}

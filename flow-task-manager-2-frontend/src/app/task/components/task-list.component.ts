@@ -22,7 +22,7 @@ import { TaskService } from '~/app/shared/services/task.service';
   ],
   template: `
     <h1>Tasks</h1>
-    <button mat-button>
+    <button [routerLink]="['new']" mat-button>
       <span class="buttontext">Add Task</span>
     </button>
     <hr>
