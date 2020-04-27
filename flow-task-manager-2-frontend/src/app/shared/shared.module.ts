@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header.component';
 import { TaskComponent } from './components/task.component';
 import { TaskService } from './services/task.service';
 import { SolutionComponent } from './components/solution.component';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SolutionComponent } from './components/solution.component';
     HeaderComponent,
     TaskComponent,
     SolutionComponent,
+    ReversePipe,
   ],
   exports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { SolutionComponent } from './components/solution.component';
     BootstrapModule,
     TaskComponent,
     SolutionComponent,
+    ReversePipe,
   ],
   imports: [
     CommonModule,
@@ -42,6 +45,7 @@ import { SolutionComponent } from './components/solution.component';
     ApiCommunicationService,
     ConfigurationService,
     TaskService,
+    ReversePipe,
   ],
 })
 export class SharedModule { }
