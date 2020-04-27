@@ -123,7 +123,7 @@ export class CreateTaskComponent {
   createTask(newTask: Task) {
     newTask.username = this.username;
     this.taskService.createTask(newTask).subscribe((data) => {
-      console.log(data);
+      this.taskService.getTasks();
     });
     this.router.navigate(['tasks']);
   }

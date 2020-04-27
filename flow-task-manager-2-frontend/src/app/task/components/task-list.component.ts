@@ -26,7 +26,7 @@ import { TaskService } from '~/app/shared/services/task.service';
       <span class="buttontext">Add Task</span>
     </button>
     <hr>
-    <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+    <app-task *ngFor="let task of tasks | reverse" [task]="task"></app-task>
   `,
 })
 export class TaskListComponent implements OnInit {
