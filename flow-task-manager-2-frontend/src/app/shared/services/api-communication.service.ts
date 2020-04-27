@@ -4,10 +4,12 @@ import { AbstractApiConnector } from '~/app/shared/api-connectors/AbstractApiCon
 import { ConfigurationService } from '~/app/shared/services/configuration.service';
 import { TaskApiConnector } from '../api-connectors/TaskApiConnector';
 import { SolutionApiConnector } from '../api-connectors/SolutionApiConnector';
+import { RatingApiConnector } from '../api-connectors/RatingApiConnector';
 
 export enum Connector {
   TASK = '[Task]',
-  SOLUTION = '[Solution]'
+  SOLUTION = '[Solution]',
+  RATING = '[Rating]'
 }
 
 @Injectable()
@@ -32,6 +34,11 @@ export class ApiCommunicationService {
     this.registerConnector(
       Connector.SOLUTION,
       new SolutionApiConnector(this.http, this.apiBaseUrl)
+    );
+
+    this.registerConnector(
+      Connector.RATING,
+      new RatingApiConnector(this.http, this.apiBaseUrl)
     );
   }
 
@@ -71,5 +78,9 @@ export class ApiCommunicationService {
 
   public solution(): SolutionApiConnector {
     return this.getConnector(Connector.SOLUTION) as SolutionApiConnector;
+  }
+
+  public rating(): RatingApiConnector {
+    return this.getConnector(Connector.RATING) as RatingApiConnector;
   }
 }

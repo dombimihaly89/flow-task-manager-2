@@ -14,7 +14,6 @@ export class TaskApiConnector extends AbstractApiConnector {
   }
 
   public createTask(newTask: Task) {
-    console.log(newTask);
     return this.http.post<Task>(`${this.apiRoute}/tasks`, newTask);
   }
 }

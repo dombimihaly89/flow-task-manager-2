@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SolutionService } from './shared/services/solution.service';
+import { RatingService } from './shared/services/rating.service';
 
 // http loader for translations file
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     useClass: HashLocationStrategy
   },
   SolutionService,
+  RatingService,
 ]
 })
 export class AppModule {
