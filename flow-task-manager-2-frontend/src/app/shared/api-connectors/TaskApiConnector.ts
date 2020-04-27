@@ -12,4 +12,9 @@ export class TaskApiConnector extends AbstractApiConnector {
   public getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.apiRoute}/tasks`);
   }
+
+  public createTask(newTask: Task) {
+    console.log(newTask);
+    return this.http.post<Task>(`${this.apiRoute}/tasks`, newTask);
+  }
 }

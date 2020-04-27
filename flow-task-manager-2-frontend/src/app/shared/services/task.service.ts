@@ -27,4 +27,9 @@ export class TaskService {
     });
   }
 
+  public createTask(newTask: Task) {
+    return this.apiCommunicationService.task()
+    .createTask(newTask);
+  }
+
 }

@@ -8,7 +8,7 @@ export enum taskTypes {
 }
 
 export enum taskDifficulties {
-  Easy = 'EASY',
-  Medium = 'MEDIUM',
-  Hard = 'HARD'
+  EASY,
+  MEDIUM,
+  HARD
 }
