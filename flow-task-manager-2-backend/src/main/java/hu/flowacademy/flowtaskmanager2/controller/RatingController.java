@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.dom4j.swing.BranchTreeNode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/ratings")
+@CrossOrigin("http://localhost:4200")
 public class RatingController {
 
   private RatingService ratingService;
@@ -35,8 +37,8 @@ public class RatingController {
   }
 
   @PostMapping
-  public ResponseEntity<RatingDTO> createRating(@RequestBody Rating rating) {
-    return new ResponseEntity<>(ratingService.createRating(rating), HttpStatus.CREATED);
+  public ResponseEntity<RatingDTO> createRating(@RequestBody RatingDTO ratingDTO) {
+    return new ResponseEntity<>(ratingService.createRating(ratingDTO), HttpStatus.CREATED);
   }
 
   @PutMapping("/{id}")

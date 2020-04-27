@@ -2,9 +2,14 @@ package hu.flowacademy.flowtaskmanager2.model.DTO;
 
 import hu.flowacademy.flowtaskmanager2.model.Post;
 import hu.flowacademy.flowtaskmanager2.model.Rating;
+import hu.flowacademy.flowtaskmanager2.model.Task;
+import hu.flowacademy.flowtaskmanager2.model.User;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 
 @Data
+@NoArgsConstructor
 public class RatingDTO {
 
   private Long id;
@@ -32,6 +37,14 @@ public class RatingDTO {
     if (rating.getTask() != null) {
       this.setTaskId(rating.getTask().getId());
     }
+  }
+
+  public Rating toEntity(User user, Task task) {
+    Rating rating = new Rating();
+    rating.setUser(user);
+    rating.setTask(task);
+    BeanUtils.copyProperties(this, rating);
+    return rating;
   }
 
 }
