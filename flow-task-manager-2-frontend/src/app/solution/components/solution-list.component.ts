@@ -13,7 +13,7 @@ import { Task } from '~/app/models/task-model';
   template: `
     <h1>Solutions</h1>
     <app-task *ngIf="task" [task]="task" (rateEvent)="getTask()"></app-task>
-    <app-solution *ngFor="let solution of solutions" [solution]="solution"></app-solution>
+    <app-solution *ngFor="let solution of solutions" [solution]="solution" (rateEvent)="getSolutions()"></app-solution>
 
   `
 })
@@ -35,7 +35,7 @@ export class SolutionListComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.solutionService.getSolutionsByTaskId(this.taskId);
+    this.getSolutions();
     this.solutionService.solutionBehaviourSubject.subscribe((solutions: Solution[]) => {
       this.solutions = solutions;
     });
@@ -47,5 +47,9 @@ export class SolutionListComponent implements OnInit {
     this.taskService.getTask(this.taskId).subscribe((task: Task) => {
       this.task = task;
     });
+  }
+
+  public getSolutions() {
+    this.solutionService.getSolutionsByTaskId(this.taskId);
   }
 }

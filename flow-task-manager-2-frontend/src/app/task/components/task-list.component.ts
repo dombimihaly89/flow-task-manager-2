@@ -6,20 +6,12 @@ import { TaskService } from '~/app/shared/services/task.service';
   selector: 'app-task-list',
   styles: [
     `
-      h1 {
-        text-align: center;
-        margin-bottom: 40px;
-        font-family: "Bangers";
-        background-color: #82B80D;
-        color: white;
-        margin-bottom: 20px;
-      }
-
       .mat-button {
         background: #82B80D;
         color: white;
         font-family: "Amatic SC";
         font-size: 2em;
+        margin-top: 20px;
       }
 
     `,

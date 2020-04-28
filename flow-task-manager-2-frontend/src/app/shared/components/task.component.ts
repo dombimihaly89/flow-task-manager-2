@@ -45,7 +45,7 @@ export class TaskComponent implements OnInit {
   }
 
   public rate(rate: string) {
-    const rating: TaskRating = {
+    const rating: Rating = {
       rating: rate,
       username: this.username,
       taskId: this.task.id,
@@ -75,9 +75,9 @@ export class TaskComponent implements OnInit {
     if (!this.rating?.rating) {
       this.rate(rate);
     } else if (rate === this.rating?.rating) {
-      this.deleteRating(this.rating?.id);
+      this.deleteRating(this.rating?.id!);
     } else {
-      this.deleteRating(this.rating?.id);
+      this.deleteRating(this.rating?.id!);
       this.rate(rate);
     }
   }

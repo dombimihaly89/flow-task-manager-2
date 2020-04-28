@@ -9,7 +9,7 @@ export class RatingService {
 
   constructor(private apiCommunicationService: ApiCommunicationService){}
 
-  public addRating(rating: TaskRating): Observable<Rating> {
+  public addRating(rating: Rating): Observable<Rating> {
     console.log(rating);
     return this.apiCommunicationService.rating()
     .addRating(rating);

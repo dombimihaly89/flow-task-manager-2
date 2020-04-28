@@ -6,7 +6,7 @@ import { AbstractApiConnector } from './AbstractApiConnector';
 export class RatingApiConnector extends AbstractApiConnector {
   protected apiRoute: string = `${this.apiBaseUrl}`;
 
-  public addRating(rating: TaskRating): Observable<Rating> {
+  public addRating(rating: Rating): Observable<Rating> {
     return this.http.post<Rating>(`${this.apiRoute}/ratings`, rating);
   }
 

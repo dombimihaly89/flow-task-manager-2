@@ -1,8 +1,8 @@
 export interface Rating {
-  id: number;
+  id?: number;
   rating: string;
   username: string;
-  solutionId: number;
-  postId: number;
-  taskId: number;
+  solutionId?: number;
+  postId?: number;
+  taskId?: number;
 }
