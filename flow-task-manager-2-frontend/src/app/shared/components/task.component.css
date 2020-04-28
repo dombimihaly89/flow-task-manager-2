@@ -33,20 +33,16 @@
   margin-right: 10px;
 }
 
-a {
-  text-decoration: none;
-}
-
 td {
   margin-right: 10px;
 }
 
 .likers {
-  color: #0e82cf;
+  color: rgb(14, 130, 207);
 }
 
 .dislikers {
-  color: #eb2805;
+  color: rgb(235, 40, 5);
 }
 
 .solutions {
@@ -65,4 +61,12 @@ td {
   padding: 10px;
   background-color: grey;
   margin-left: 5px;
+}
+
+.likepressed {
+  box-shadow: 5px 5px 15px 0px rgba(14,130,207,0.9), -5px -5px 15px 0 rgba(14,130,207,0.9);
+}
+
+.dislikepressed {
+  box-shadow: 5px 5px 15px 0px rgba(235, 40, 5,0.9), -5px -5px 15px 0 rgba(235, 40, 5,0.9);
 }

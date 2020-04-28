@@ -13,6 +13,7 @@ import { TaskComponent } from './components/task.component';
 import { TaskService } from './services/task.service';
 import { SolutionComponent } from './components/solution.component';
 import { ReversePipe } from './pipes/reverse.pipe';
+import { LikersComponent } from './components/likers.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReversePipe } from './pipes/reverse.pipe';
     HeaderComponent,
     TaskComponent,
     SolutionComponent,
+    LikersComponent,
     ReversePipe,
   ],
   exports: [

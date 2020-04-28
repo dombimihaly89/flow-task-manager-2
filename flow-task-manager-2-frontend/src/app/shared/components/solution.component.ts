@@ -9,7 +9,7 @@ import { Solution } from '~/app/models/solution-model';
         width: 80vh;
         margin:auto;
         margin-bottom: 20px;
-        background-color: rgba(250, 194, 231, 0.5);
+        // background-color: rgba(250, 194, 231, 0.5);
       }
 
       mat-card-header {
@@ -36,6 +36,7 @@ import { Solution } from '~/app/models/solution-model';
           {{ solution.content }}
         </p>
       </mat-card-content>
+      <hr>
       <mat-card-actions>
         <button mat-button class="like">LIKE</button>
         <button mat-button class="dislike">DISLIKE</button>

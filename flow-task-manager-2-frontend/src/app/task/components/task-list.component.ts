@@ -9,6 +9,10 @@ import { TaskService } from '~/app/shared/services/task.service';
       h1 {
         text-align: center;
         margin-bottom: 40px;
+        font-family: "Bangers";
+        background-color: #82B80D;
+        color: white;
+        margin-bottom: 20px;
       }
 
       .mat-button {

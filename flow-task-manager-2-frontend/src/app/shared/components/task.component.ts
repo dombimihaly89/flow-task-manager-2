@@ -36,7 +36,6 @@ export class TaskComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    console.log(this.task);
   }
 
   public ngOnChanges(changes: SimpleChanges) {

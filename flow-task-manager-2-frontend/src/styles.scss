@@ -8,6 +8,10 @@
   font-family: 'Amatic SC';
   src: url(/assets/fonts/AmaticSC-Bold.ttf) format("truetype");
 }
+@font-face {
+  font-family: 'Bangers';
+  src: url(/assets/fonts/Bangers-Regular.ttf) format("truetype");
+}
 
 .like {
   margin-left: 0px !important;
@@ -56,4 +60,25 @@ textarea {
 .mat-form-field-underline {
   height: 0px !important;
   width: 0px !important;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: "Bangers";
+  background-color: #82B80D;
+  color: white;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.likers {
+  color: rgb(14, 130, 207);
+}
+
+.dislikers {
+  color: rgb(235, 40, 5);
 }
