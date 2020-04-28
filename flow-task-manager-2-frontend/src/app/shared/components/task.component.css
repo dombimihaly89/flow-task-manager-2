@@ -49,11 +49,3 @@ td {
   background-color: grey;
   margin-left: 5px;
 }
-
-.likepressed {
-  box-shadow: 5px 5px 15px 0px rgba(14,130,207,0.9), -5px -5px 15px 0 rgba(14,130,207,0.9);
-}
-
-.dislikepressed {
-  box-shadow: 5px 5px 15px 0px rgba(235, 40, 5,0.9), -5px -5px 15px 0 rgba(235, 40, 5,0.9);
-}

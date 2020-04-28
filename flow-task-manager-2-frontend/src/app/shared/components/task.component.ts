@@ -7,7 +7,6 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { Rating } from "~/app/models/rating-models/rating-model";
-import { TaskRating } from "~/app/models/rating-models/task-rating.model";
 import { Task } from "~/app/models/task-model";
 import { RatingService } from "../services/rating.service";
 import { TaskService } from "../services/task.service";
