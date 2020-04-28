@@ -1,4 +1,4 @@
-import { Rating } from './rating-model';
+import { Rating } from './rating-models/rating-model';
 
 export interface Task {
   id: number;

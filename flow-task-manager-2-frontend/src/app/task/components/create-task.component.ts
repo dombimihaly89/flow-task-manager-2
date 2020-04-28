@@ -122,7 +122,8 @@ export class CreateTaskComponent {
 
   createTask(newTask: Task) {
     newTask.username = this.username;
-    this.taskService.createTask(newTask).subscribe((data) => {
+    this.taskService.createTask(newTask)
+    .subscribe(() => {
       this.taskService.getTasks();
     });
     this.router.navigate(['tasks']);

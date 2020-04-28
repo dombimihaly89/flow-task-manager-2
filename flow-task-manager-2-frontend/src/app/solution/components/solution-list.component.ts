@@ -12,7 +12,7 @@ import { Task } from '~/app/models/task-model';
   `],
   template: `
     <h1>Solutions</h1>
-    <app-task *ngIf="task" [task]="task"></app-task>
+    <app-task *ngIf="task" [task]="task" (rateEvent)="getTask()"></app-task>
     <app-solution *ngFor="let solution of solutions" [solution]="solution"></app-solution>
 
   `
@@ -40,10 +40,12 @@ export class SolutionListComponent implements OnInit {
       this.solutions = solutions;
     });
 
-    this.taskService.getTask(this.taskId)
-    .subscribe((task: Task) => {
+    this.getTask();
+  }
+
+  public getTask() {
+    this.taskService.getTask(this.taskId).subscribe((task: Task) => {
       this.task = task;
-      console.log(this.task);
-    })
+    });
   }
 }

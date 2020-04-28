@@ -6,12 +6,12 @@ import { ApiCommunicationService } from './api-communication.service';
 @Injectable()
 export class TaskService {
 
-  private _taskBehaviourSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
+  private _tasksBehaviourSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
 
   constructor(private apiCommunicationService: ApiCommunicationService) {}
 
-  public get taskBehaviourSubject() {
-    return this._taskBehaviourSubject;
+  public get tasksBehaviourSubject() {
+    return this._tasksBehaviourSubject;
   }
 
   public getTask(taskId: number): Observable<Task> {
@@ -23,7 +23,7 @@ export class TaskService {
     this.apiCommunicationService.task()
     .getTasks()
     .subscribe((tasks: Task[]) => {
-      this._taskBehaviourSubject.next(tasks);
+      this._tasksBehaviourSubject.next(tasks);
     });
   }
 

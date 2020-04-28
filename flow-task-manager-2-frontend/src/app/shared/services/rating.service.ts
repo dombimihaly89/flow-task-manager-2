@@ -14,4 +14,9 @@ export class RatingService {
     return this.apiCommunicationService.rating()
     .addRating(rating);
   }
+
+  public deleteRating(ratingId: number) {
+    return this.apiCommunicationService.rating()
+    .deleteRating(ratingId);
+  }
 }

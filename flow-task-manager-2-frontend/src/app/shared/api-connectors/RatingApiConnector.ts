@@ -10,4 +10,8 @@ export class RatingApiConnector extends AbstractApiConnector {
     return this.http.post<Rating>(`${this.apiRoute}/ratings`, rating);
   }
 
+  public deleteRating(ratingId: number) {
+    return this.http.delete(`${this.apiRoute}/ratings/${ratingId}`);
+  }
+
 }
