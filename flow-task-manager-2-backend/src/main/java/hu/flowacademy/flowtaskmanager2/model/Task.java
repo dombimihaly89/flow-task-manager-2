@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Task {
+public class Task implements Rateable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

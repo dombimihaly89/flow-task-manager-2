@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Solution {
+public class Solution implements Rateable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
