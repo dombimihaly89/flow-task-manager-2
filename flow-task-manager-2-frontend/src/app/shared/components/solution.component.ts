@@ -3,7 +3,6 @@ import {
   EventEmitter,
   Input,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { Rating } from '~/app/models/rating-models/rating-model';
 import { Solution } from '~/app/models/solution-model';
@@ -97,8 +96,8 @@ export class SolutionComponent {
     private solutionService: SolutionService
   ) {}
 
-  public ngOnChanges(changes: SimpleChanges) {
-    if (changes.solution?.currentValue) {
+  public ngOnChanges() {
+    if (this.solution) {
       this.getRatings();
     }
   }
