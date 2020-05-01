@@ -1,4 +1,5 @@
 export enum taskTypes {
+  All = 'ALL',
   Java = 'JAVA',
   Javascript = 'JAVASCRIPT',
   Spring = 'SPRING',

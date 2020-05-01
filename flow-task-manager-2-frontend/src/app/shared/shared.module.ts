@@ -14,6 +14,7 @@ import { TaskService } from './services/task.service';
 import { SolutionComponent } from './components/solution.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { LikersComponent } from './components/likers.component';
+import { HideTypePipe } from './pipes/hide-type.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LikersComponent } from './components/likers.component';
     SolutionComponent,
     LikersComponent,
     ReversePipe,
+    HideTypePipe,
   ],
   exports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { LikersComponent } from './components/likers.component';
     TaskComponent,
     SolutionComponent,
     ReversePipe,
+    HideTypePipe,
   ],
   imports: [
     CommonModule,
@@ -48,6 +51,7 @@ import { LikersComponent } from './components/likers.component';
     ConfigurationService,
     TaskService,
     ReversePipe,
+    HideTypePipe,
   ],
 })
 export class SharedModule { }

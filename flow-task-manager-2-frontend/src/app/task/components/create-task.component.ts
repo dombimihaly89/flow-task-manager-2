@@ -58,7 +58,7 @@ import { Router } from '@angular/router';
       <mat-label>Type:</mat-label>
       <mat-select formControlName="type">
         <mat-option
-          *ngFor="let taskType of taskTypes | keyvalue"
+          *ngFor="let taskType of taskTypes | keyvalue | hideType"
           [value]="taskType.value"
         >
           {{ taskType.key }}
