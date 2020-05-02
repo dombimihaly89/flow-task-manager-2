@@ -42,6 +42,7 @@ import { taskTypes } from "../task-types-difficulties";
       class="type-dropdown"
       #typeSelector
       (selectionChange)="filterByTask(typeSelector.value)"
+      [(ngModel)]="filteredBy"
     >
       <mat-option
         style="display: inline"
@@ -51,10 +52,15 @@ import { taskTypes } from "../task-types-difficulties";
         {{ type.value }}
       </mat-option>
     </mat-select>
-    <button mat-button class="sort-by-date" (click)="sortByDate(!sortedByDate)">
+    <button
+      mat-button
+      class="sort-by-date"
+      (click)="sortByDate(!sortedByDate)"
+      [ngClass]="{ sortByDatePressed: !sortedByLike }"
+    >
       Sort By Date
     </button>
-    <button mat-button class="sort-by-like" (click)="sortByLike()">
+    <button mat-button class="sort-by-like" (click)="sortByLike()" [ngClass]="{sortByLikePressed: sortedByLike}">
       Sort By Like
     </button>
     <hr />
@@ -65,8 +71,10 @@ export class TaskListComponent implements OnInit {
   public tasks: Task[];
   public taskTypes = taskTypes;
 
+  public filteredBy: string;
   public filteredTasks: Task[];
   public sortedByDate: boolean = true;
+  public sortedByLike: boolean = false;
 
   constructor(private taskService: TaskService) {}
 
@@ -74,22 +82,37 @@ export class TaskListComponent implements OnInit {
     this.taskService.getTasks();
     this.taskService.tasksBehaviourSubject.subscribe((tasks: Task[]) => {
       this.tasks = tasks;
-      this.filteredTasks = this.tasks.slice(0);
-      this.sortByDate(this.sortedByDate);
+      console.log(this.filteredBy);
+      if (this.sortedByLike || (this.filteredBy && this.filteredBy !== 'ALL')) {
+        console.log('sorted');
+        for (let i = 0; i < this.filteredTasks.length; i++) {
+          this.filteredTasks[i] = tasks.find(
+            (t) => t.id === this.filteredTasks[i].id
+          )!;
+        }
+      } else {
+        this.filteredTasks = this.tasks.slice(0);
+        this.sortByDate(this.sortedByDate);
+      }
     });
   }
 
   public filterByTask(value) {
     if (value === "ALL") {
       this.filteredTasks = this.tasks;
+      if (this.sortedByDate) this.sortByDate(this.sortedByDate);
+      else if (this.sortedByLike) this.sortByLike();
     } else {
       this.filteredTasks = this.tasks
         .filter((task) => task.type === value)
         .slice(0);
+        if (this.sortedByDate) this.sortByDate(this.sortedByDate);
+        else if (this.sortedByLike) this.sortByLike();
     }
   }
 
   public sortByDate(sortedByDate: boolean) {
+    this.sortedByLike = false;
     this.sortedByDate = sortedByDate;
     if (sortedByDate) {
       this.filteredTasks.sort((t1, t2) => {
@@ -116,11 +139,21 @@ export class TaskListComponent implements OnInit {
 
   public sortByLike() {
     this.sortedByDate = false;
-    this.filteredTasks.sort((t1, t2) => {
-      return (
-        t2.ratings.filter((r) => r.rating === "LIKE").length -
-        t1.ratings.filter((r) => r.rating === "LIKE").length
-      );
-    });
+    this.sortedByLike = true;
+    if (this.filteredBy === 'ALL') {
+      this.filteredTasks = this.tasks.sort((t1, t2) => {
+        return (
+          t2.ratings.filter((r) => r.rating === "LIKE").length -
+          t1.ratings.filter((r) => r.rating === "LIKE").length
+        );
+      });
+    } else {
+      this.filteredTasks = this.filteredTasks.sort((t1, t2) => {
+        return (
+          t2.ratings.filter((r) => r.rating === "LIKE").length -
+          t1.ratings.filter((r) => r.rating === "LIKE").length
+        );
+      });
+    }
   }
 }
