@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { Task } from "~/app/models/task-model";
-import { TaskService } from "~/app/shared/services/task.service";
-import { taskTypes } from "../task-types-difficulties";
+import { Component, OnInit } from '@angular/core';
+import { Task } from '~/app/models/task-model';
+import { TaskService } from '~/app/shared/services/task.service';
+import { taskTypes } from '../task-types-difficulties';
 
 @Component({
-  selector: "app-task-list",
+  selector: 'app-task-list',
   styles: [
     `
       .mat-button {
@@ -98,16 +98,14 @@ export class TaskListComponent implements OnInit {
   }
 
   public filterByTask(value) {
-    if (value === "ALL") {
+    if (value === 'ALL') {
       this.filteredTasks = this.tasks;
-      if (this.sortedByDate) this.sortByDate(this.sortedByDate);
-      else if (this.sortedByLike) this.sortByLike();
+      if (this.sortedByDate) {this.sortByDate(this.sortedByDate); } else if (this.sortedByLike) {this.sortByLike(); }
     } else {
       this.filteredTasks = this.tasks
         .filter((task) => task.type === value)
         .slice(0);
-        if (this.sortedByDate) this.sortByDate(this.sortedByDate);
-        else if (this.sortedByLike) this.sortByLike();
+      if (this.sortedByDate) {this.sortByDate(this.sortedByDate); } else if (this.sortedByLike) { this.sortByLike(); }
     }
   }
 
@@ -143,15 +141,15 @@ export class TaskListComponent implements OnInit {
     if (this.filteredBy === 'ALL') {
       this.filteredTasks = this.tasks.sort((t1, t2) => {
         return (
-          t2.ratings.filter((r) => r.rating === "LIKE").length -
-          t1.ratings.filter((r) => r.rating === "LIKE").length
+          t2.ratings.filter((r) => r.rating === 'LIKE').length -
+          t1.ratings.filter((r) => r.rating === 'LIKE').length
         );
       });
     } else {
       this.filteredTasks = this.filteredTasks.sort((t1, t2) => {
         return (
-          t2.ratings.filter((r) => r.rating === "LIKE").length -
-          t1.ratings.filter((r) => r.rating === "LIKE").length
+          t2.ratings.filter((r) => r.rating === 'LIKE').length -
+          t1.ratings.filter((r) => r.rating === 'LIKE').length
         );
       });
     }
