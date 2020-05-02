@@ -82,9 +82,7 @@ export class TaskListComponent implements OnInit {
     this.taskService.getTasks();
     this.taskService.tasksBehaviourSubject.subscribe((tasks: Task[]) => {
       this.tasks = tasks;
-      console.log(this.filteredBy);
       if (this.sortedByLike || (this.filteredBy && this.filteredBy !== 'ALL')) {
-        console.log('sorted');
         for (let i = 0; i < this.filteredTasks.length; i++) {
           this.filteredTasks[i] = tasks.find(
             (t) => t.id === this.filteredTasks[i].id
