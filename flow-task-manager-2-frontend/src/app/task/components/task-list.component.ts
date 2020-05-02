@@ -92,7 +92,6 @@ export class TaskListComponent implements OnInit {
   public sortByDate(sortedByDate: boolean) {
     this.sortedByDate = sortedByDate;
     if (sortedByDate) {
-      console.log("növekvő");
       this.filteredTasks.sort((t1, t2) => {
         if (t1.createdAt > t2.createdAt) {
           return -1;
@@ -116,6 +115,7 @@ export class TaskListComponent implements OnInit {
   }
 
   public sortByLike() {
+    this.sortedByDate = false;
     this.filteredTasks.sort((t1, t2) => {
       return (
         t2.ratings.filter((r) => r.rating === "LIKE").length -
