@@ -41,13 +41,13 @@ public class InitDataLoader {
 
     taskRepository.save(
         Task.builder().title("Hello World").type(Type.JAVA).content("Make a hello world task.").difficulty(
-        Difficulty.EASY).createdAt(LocalDateTime.now()).user(userRepository.findById(1L).orElseThrow(() -> new UserNotFoundException(1L))).build());
+        Difficulty.EASY).createdAt(LocalDateTime.of(2020, 4, 30, 15, 30, 15)).user(userRepository.findById(1L).orElseThrow(() -> new UserNotFoundException(1L))).build());
     taskRepository.save(
         Task.builder().title("Palindrom").type(Type.JAVASCRIPT).content("Make a palindrom checker").difficulty(
-            Difficulty.MEDIUM).createdAt(LocalDateTime.now()).user(userRepository.findById(1L).orElseThrow(() -> new UserNotFoundException(1L))).build());
+            Difficulty.MEDIUM).createdAt(LocalDateTime.of(2020, 4, 30, 18, 30, 15)).user(userRepository.findById(1L).orElseThrow(() -> new UserNotFoundException(1L))).build());
     taskRepository.save(
         Task.builder().title("Blog app").type(Type.SPRING).content("Make a blog app").difficulty(
-            Difficulty.HARD).createdAt(LocalDateTime.now()).user(userRepository.findById(2L).orElseThrow(() -> new UserNotFoundException(2L))).build());
+            Difficulty.HARD).createdAt(LocalDateTime.of(2020, 5, 1, 14, 45, 20)).user(userRepository.findById(2L).orElseThrow(() -> new UserNotFoundException(2L))).build());
 
     solutionRepository.save(
         Solution.builder().content("System.out.println(\"Hello World\")").createdAt(LocalDateTime.now()).task(taskRepository.findById(1L).orElseThrow(() -> new TaskNotFoundException(1L)))
