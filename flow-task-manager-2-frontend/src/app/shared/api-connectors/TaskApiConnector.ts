@@ -16,4 +16,8 @@ export class TaskApiConnector extends AbstractApiConnector {
   public createTask(newTask: Task) {
     return this.http.post<Task>(`${this.apiRoute}/tasks`, newTask);
   }
+
+  public deleteTask(taskId: number) {
+    return this.http.delete(`${this.apiRoute}/tasks/${taskId}`);
+  }
 }

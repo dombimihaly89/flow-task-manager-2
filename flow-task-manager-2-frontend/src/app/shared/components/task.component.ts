@@ -10,6 +10,8 @@ import { Rating } from "~/app/models/rating-models/rating-model";
 import { Task } from "~/app/models/task-model";
 import { RatingService } from "../services/rating.service";
 import { TaskService } from "../services/task.service";
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { TaskDeleteComponent } from '../modals/task-delete.component';
 
 @Component({
   selector: "app-task",
@@ -29,9 +31,13 @@ export class TaskComponent implements OnInit {
   @Output()
   public rateEvent: EventEmitter<number> = new EventEmitter();
 
+  @Output()
+  public deleteEvent = new EventEmitter();
+
   constructor(
     private ratingService: RatingService,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private matDialog: MatDialog
   ) {}
 
   public ngOnInit() {
@@ -87,5 +93,18 @@ export class TaskComponent implements OnInit {
       this.taskService.getTasks();
       this.rateEvent.emit();
     });
+  }
+
+  public deleteTask(taskId: number) {
+    const matDialogConfig = new MatDialogConfig();
+    matDialogConfig.disableClose = true;
+    matDialogConfig.height = '150px';
+    matDialogConfig.width = '450px';
+
+
+    this.matDialog.open(TaskDeleteComponent, matDialogConfig);
+    /* this.taskService.deleteTask(taskId).subscribe(() => {
+      this.deleteEvent.emit();
+    }); */
   }
 }

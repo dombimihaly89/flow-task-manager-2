@@ -49,3 +49,14 @@ td {
   background-color: grey;
   margin-left: 5px;
 }
+
+.mat-card-header {
+  overflow: hidden !important;
+}
+
+.deleteButton {
+  position: absolute !important;
+  right: 10px;
+  background-color: #eb2805;
+  color: white;
+}

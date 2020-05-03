@@ -1,12 +1,17 @@
 <mat-card>
-  <a [routerLink]="['/tasks', task.id]">
-    <mat-card-header>
-      <div mat-card-avatar [ngClass]="task.type"></div>
-      <mat-card-title>{{ task.title }}</mat-card-title>
-      <mat-card-subtitle> {{ task.type }}</mat-card-subtitle>
-      <mat-card-subtitle>Posted by: {{ task.username }} </mat-card-subtitle>
-    </mat-card-header>
-  </a>
+  <mat-card-header>
+    <div mat-card-avatar [ngClass]="task.type"></div>
+    <mat-card-title
+      style="cursor: pointer;"
+      [routerLink]="['/tasks', task.id]"
+      >{{ task.title }}</mat-card-title
+    >
+    <mat-card-subtitle> {{ task.type }}</mat-card-subtitle>
+    <mat-card-subtitle>Posted by: {{ task.username }} </mat-card-subtitle>
+    <button *ngIf="username === task.username" class="deleteButton" (click)="deleteTask(task.id)" mat-button>
+      DELETE
+    </button>
+  </mat-card-header>
   <hr />
   <mat-card-content>
     <p>
@@ -14,18 +19,32 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <hr>
+    <hr />
     <app-likers [likers]="likers" [dislikers]="dislikers"></app-likers>
-    <button mat-button class="like" [ngClass]="{likepressed: rating?.rating==='LIKE'}" (click)="checkRating('LIKE')">LIKE</button>
-    <button mat-button class="dislike" [ngClass]="{dislikepressed: rating?.rating==='DISLIKE'}" (click)="checkRating('DISLIKE')">DISLIKE</button>
+    <button
+      mat-button
+      class="like"
+      [ngClass]="{ likepressed: rating?.rating === 'LIKE' }"
+      (click)="checkRating('LIKE')"
+    >
+      LIKE
+    </button>
+    <button
+      mat-button
+      class="dislike"
+      [ngClass]="{ dislikepressed: rating?.rating === 'DISLIKE' }"
+      (click)="checkRating('DISLIKE')"
+    >
+      DISLIKE
+    </button>
     <button mat-button class="post">POST A SOLUTION</button>
   </mat-card-actions>
   <mat-card-footer>
     <p>
       <a [routerLink]="['/tasks', task.id]">
-      <span class="solutions">
-      SOLUTIONS: <span class="solution-number">{{ task.solutions }}</span>
-      </span>
+        <span class="solutions">
+          SOLUTIONS: <span class="solution-number">{{ task.solutions }}</span>
+        </span>
       </a>
       <span class="createdAt">
         Created: {{ task.createdAt | date: "yyyy.MM.dd. HH:mm" }}

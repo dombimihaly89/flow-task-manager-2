@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Task } from '~/app/models/task-model';
-import { TaskService } from '~/app/shared/services/task.service';
-import { taskTypes } from '../task-types-difficulties';
+import { Component, OnInit } from "@angular/core";
+import { Task } from "~/app/models/task-model";
+import { TaskService } from "~/app/shared/services/task.service";
+import { taskTypes } from "../task-types-difficulties";
 
 @Component({
-  selector: 'app-task-list',
+  selector: "app-task-list",
   styles: [
     `
       .mat-button {
@@ -34,7 +34,7 @@ import { taskTypes } from '../task-types-difficulties';
   template: `
     <h1>Tasks</h1>
     <button [routerLink]="['new']" mat-button>
-      <span class="buttontext">Add Task</span>
+      <span>Add Task</span>
     </button>
     <br />
     <mat-label class="task-selector">Task type</mat-label>
@@ -60,18 +60,27 @@ import { taskTypes } from '../task-types-difficulties';
     >
       Sort By Date
     </button>
-    <button mat-button class="sort-by-like" (click)="sortByLike()" [ngClass]="{sortByLikePressed: sortedByLike}">
+    <button
+      mat-button
+      class="sort-by-like"
+      (click)="sortByLike()"
+      [ngClass]="{ sortByLikePressed: sortedByLike }"
+    >
       Sort By Like
     </button>
     <hr />
-    <app-task *ngFor="let task of filteredTasks" [task]="task"></app-task>
+    <app-task
+      *ngFor="let task of filteredTasks"
+      [task]="task"
+      (deleteEvent)="deleteTask()"
+    ></app-task>
   `,
 })
 export class TaskListComponent implements OnInit {
   public tasks: Task[];
   public taskTypes = taskTypes;
 
-  public filteredBy: string;
+  public filteredBy: string = 'ALL';
   public filteredTasks: Task[];
   public sortedByDate: boolean = true;
   public sortedByLike: boolean = false;
@@ -79,15 +88,17 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   public ngOnInit() {
+    console.log('ngOninit-ben');
     this.taskService.getTasks();
     this.taskService.tasksBehaviourSubject.subscribe((tasks: Task[]) => {
       this.tasks = tasks;
-      if (this.sortedByLike || (this.filteredBy && this.filteredBy !== 'ALL')) {
+      if (this.sortedByLike || (this.filteredBy && this.filteredBy !== "ALL")) {
         for (let i = 0; i < this.filteredTasks.length; i++) {
           this.filteredTasks[i] = tasks.find(
             (t) => t.id === this.filteredTasks[i].id
           )!;
         }
+        this.filteredTasks = this.filteredTasks.filter((t) => t !== undefined);
       } else {
         this.filteredTasks = this.tasks.slice(0);
         this.sortByDate(this.sortedByDate);
@@ -96,14 +107,22 @@ export class TaskListComponent implements OnInit {
   }
 
   public filterByTask(value) {
-    if (value === 'ALL') {
-      this.filteredTasks = this.tasks;
-      if (this.sortedByDate) {this.sortByDate(this.sortedByDate); } else if (this.sortedByLike) {this.sortByLike(); }
+    if (value === "ALL") {
+      this.filteredTasks = this.tasks.slice(0);
+      if (this.sortedByDate) {
+        this.sortByDate(this.sortedByDate);
+      } else if (this.sortedByLike) {
+        this.sortByLike();
+      }
     } else {
       this.filteredTasks = this.tasks
         .filter((task) => task.type === value)
         .slice(0);
-      if (this.sortedByDate) {this.sortByDate(this.sortedByDate); } else if (this.sortedByLike) { this.sortByLike(); }
+      if (this.sortedByDate) {
+        this.sortByDate(this.sortedByDate);
+      } else if (this.sortedByLike) {
+        this.sortByLike();
+      }
     }
   }
 
@@ -136,20 +155,24 @@ export class TaskListComponent implements OnInit {
   public sortByLike() {
     this.sortedByDate = false;
     this.sortedByLike = true;
-    if (this.filteredBy === 'ALL') {
+    if (this.filteredBy === "ALL") {
       this.filteredTasks = this.tasks.sort((t1, t2) => {
         return (
-          t2.ratings.filter((r) => r.rating === 'LIKE').length -
-          t1.ratings.filter((r) => r.rating === 'LIKE').length
+          t2.ratings.filter((r) => r.rating === "LIKE").length -
+          t1.ratings.filter((r) => r.rating === "LIKE").length
         );
-      });
+      }).slice(0);
     } else {
       this.filteredTasks = this.filteredTasks.sort((t1, t2) => {
         return (
-          t2.ratings.filter((r) => r.rating === 'LIKE').length -
-          t1.ratings.filter((r) => r.rating === 'LIKE').length
+          t2.ratings.filter((r) => r.rating === "LIKE").length -
+          t1.ratings.filter((r) => r.rating === "LIKE").length
         );
-      });
+      }).slice(0);
     }
+  }
+
+  public deleteTask() {
+    this.taskService.getTasks();
   }
 }

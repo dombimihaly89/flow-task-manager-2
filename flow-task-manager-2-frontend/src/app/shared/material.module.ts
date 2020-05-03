@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatDialogModule,
   ],
   imports: [
     MatToolbarModule,
@@ -24,6 +26,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatDialogModule,
   ],
 })
 export class MaterialModule { }

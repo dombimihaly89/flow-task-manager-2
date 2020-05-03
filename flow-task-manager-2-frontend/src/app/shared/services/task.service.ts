@@ -32,4 +32,9 @@ export class TaskService {
     .createTask(newTask);
   }
 
+  public deleteTask(taskId: number) {
+    return this.apiCommunicationService.task()
+    .deleteTask(taskId);
+  }
+
 }
