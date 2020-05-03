@@ -15,6 +15,7 @@ import { SolutionComponent } from './components/solution.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { LikersComponent } from './components/likers.component';
 import { HideTypePipe } from './pipes/hide-type.pipe';
+import { TaskDeleteComponent } from './modals/task-delete.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HideTypePipe } from './pipes/hide-type.pipe';
     LikersComponent,
     ReversePipe,
     HideTypePipe,
+    TaskDeleteComponent,
   ],
   exports: [
     CommonModule,
