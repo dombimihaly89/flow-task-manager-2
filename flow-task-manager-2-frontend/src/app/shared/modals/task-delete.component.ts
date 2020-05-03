@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter } from "@angular/core";
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   template: `
@@ -6,8 +7,8 @@ import { Component } from "@angular/core";
     <div>
       <span class="buttons">
     <mat-dialog-actions>
-      <button class="yes mat-button" mat-button>Yes</button>
-      <button class="no mat-button" mat-button>
+      <button class="yes mat-button" mat-button (click)="delete()">Yes</button>
+      <button class="no mat-button" mat-button (click)="close()">
         No
       </button>
     </mat-dialog-actions>
@@ -48,4 +49,18 @@ import { Component } from "@angular/core";
     `,
   ],
 })
-export class TaskDeleteComponent {}
+export class TaskDeleteComponent {
+
+  public deleteEvent = new EventEmitter();
+
+  constructor(private matDialogRef: MatDialogRef<TaskDeleteComponent>) {}
+
+  public delete() {
+    this.deleteEvent.emit();
+    this.close();
+  }
+
+  public close() {
+    this.matDialogRef.close();
+  }
+}

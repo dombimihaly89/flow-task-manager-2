@@ -101,10 +101,15 @@ export class TaskComponent implements OnInit {
     matDialogConfig.height = '150px';
     matDialogConfig.width = '450px';
 
+    let matDialogRef = this.matDialog.open(TaskDeleteComponent, matDialogConfig);
+    const sub = matDialogRef.componentInstance.deleteEvent.subscribe(() => {
+      this.taskService.deleteTask(taskId).subscribe(() => {
+        this.deleteEvent.emit();
+      });
+    });
 
-    this.matDialog.open(TaskDeleteComponent, matDialogConfig);
-    /* this.taskService.deleteTask(taskId).subscribe(() => {
-      this.deleteEvent.emit();
-    }); */
+    matDialogRef.afterClosed().subscribe(() => {
+      sub.unsubscribe();
+    });
   }
 }
